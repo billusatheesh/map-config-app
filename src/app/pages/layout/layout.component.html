@@ -1,0 +1,40 @@
+<nb-layout>
+  <nb-layout-header fixed>
+    <div class="container">
+      <div class="row header-margin">
+        <div class="col">
+          <div class="top">
+            <div class="logo">
+              <img src="../../../assets/company_logo.png">
+              <span>SREE <span class="primary">Software</span><span class="second-primary">Solutions</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          
+        </div>
+        <div class="col">
+          <div class="container justify-content-center">
+            <div class="row">
+              <div class="col"></div>
+              <div class="col"></div>
+              <div class="col">
+                <button nbButton (click)="onLogout()">
+                  <nb-icon icon="log-out-outline" class="primary"></nb-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nb-layout-header>
+
+  <nb-sidebar>
+    <nb-menu [items]="menuItems" autoCollapse="true"></nb-menu>
+  </nb-sidebar>
+
+  <nb-layout-column>
+    <router-outlet />
+  </nb-layout-column>
+</nb-layout>

@@ -1,0 +1,15 @@
+<div class="table-container">
+    <!-- <div class="action-row">
+      <button nbButton (click)="updateSettings()">
+        <span class="material-symbols-outlined primary">update</span>
+      </button>
+      <button nbButton (click)="deleteSettings()">
+        <span class="material-symbols-outlined danger">delete</span>
+      </button>
+    </div> -->
+    <span id="selectedRows"></span>
+    <ag-grid-angular style="height: 450px" class="ag-theme-quartz" [columnDefs]="colDefs" [defaultColDef]="defaultColDef"
+      [rowSelection]="rowSelection" [rowData]="rowData" [pagination]="true"
+      [paginationAutoPageSize]="true" (gridReady)="onGridReady($event)" (selectionChanged)="onRowClicked($event)">
+    </ag-grid-angular>
+  </div>

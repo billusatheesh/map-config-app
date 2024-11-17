@@ -1,0 +1,32 @@
+// h2 {
+//     font-size: 1rem;
+//     font-family: Open Sans, sans-serif;
+//     font-weight: 700;
+//     line-height: 2.5rem;
+//     color: var(--color-danger);
+// }
+.header-margin {
+    margin-left: -70px;
+    margin-right: -70px;
+}
+span {
+    font-weight: bold;
+
+}
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0rem;
+}
+.top .logo {
+    display: flex;
+    gap: 0rem;
+}
+.logo img {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+h2{
+    font-size: 1.0rem;
+}

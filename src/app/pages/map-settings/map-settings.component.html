@@ -1,0 +1,94 @@
+<h1>{{testData}}</h1>
+<div class="box add-map">
+  <form [formGroup]="mapDataForm" (ngSubmit)="onMapDataSubmitted()">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <label for="type">*Type</label>
+          <input nbInput type="text" id="type" shape="semi-round" placeholder="Type" formControlName="type" />
+        </div>
+        <div class="col">
+          <label for="direction">*Direction</label>
+          <input nbInput type="direction" id="direction" shape="semi-round" placeholder="Direction"
+            formControlName="direction" />
+        </div>
+        <!-- <div class="col">
+          <label for="translationObj">*Translation Object</label>
+            <nb-select id="mapSettingId" shape="semi-round" formControlName="mapSettingId" placeholder="Translator Object">
+              <nb-option [value]="mapSeeting.id" *ngFor="let mapSeeting of mapSettingArray">{{mapSeeting.type}}</nb-option>
+            </nb-select>
+        </div> -->
+        <div class="col">
+          <label for="desc">*Description</label>
+          <input nbInput type="text" id="desc" shape="semi-round" placeholder="Description" formControlName="desc" />
+        </div>
+      </div>
+      <!-- File Input controls start -->
+      <span type="button" class="material-symbols-outlined" (click)="addInputFiles()">
+        add </span><small>Add More Input Files</small>
+      <div class="row" *ngFor="let inputF of inputFileData; let i = index">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-auto input-file">
+              <label>*Input File</label>
+              <input name="file" type="file" [id]="'inputFile'+i" nbInput shape="semi-round" class="form-control"
+                size="small" (change)="onInputFileChanged($event, i)" />
+            </div>
+            <div class="col-md-auto output-box">
+              <span type="button" class="material-symbols-outlined" (click)="addOutputFiles(i)">
+                add </span><small>Add More Output Files</small>
+              <div class="container" *ngFor="let outputFile_ of inputFileData.at(i)?.outputFiles; let j = index">
+                <div class="row output-content">
+                  <div class="col">
+                    <label for="outputFile">*Output Files</label>
+                    <input type="file" [id]="'outputFile'+i+''+j" nbInput shape="semi-round" class="form-control"
+                      size="small" (change)="onOutputFileChanged($event, i, j)" />
+                  </div>
+                  <div class="col">
+                    <label for="regexPattern">*Regex Pattern</label>
+                    <input nbInput type="text" [id]="'regexPattern'+i+''+j" shape="semi-round"
+                      placeholder="regexPattern" class="form-control" (change)="regexValueChange($event, i, j)" />
+                  </div>
+                  <div *ngIf="inputFileData.at(i)?.outputFiles?.length !==1" class="col-md-auto">
+                    <span type="button" class="material-symbols-outlined danger file-close"
+                      (click)="removeOutputFile(i, j)">
+                      close
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="inputFileData.length > 1" class="col-md-auto input-delete-icon">
+              <span class="material-symbols-outlined danger" (click)="removeInputFile(i)">delete</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button nbButton shape="semi-round" status="info" type="submit" [disabled]="!mapDataForm.valid">
+      Submit
+    </button>
+  </form>
+</div>
+<!-- END OF MAPSETTING FORM -->
+<div class="table-container">
+  <div class="action-row">
+    <button nbButton (click)="updateSettings()">
+      <span class="material-symbols-outlined primary">update</span>
+    </button>
+    <button nbButton (click)="deleteSettings()">
+      <span class="material-symbols-outlined danger">delete</span>
+    </button>
+  </div>
+  <ag-grid-angular
+    style="height: 300px"
+    class="ag-theme-quartz"
+    [columnDefs]="colDefs"
+    [defaultColDef]="defaultColDef"
+    [rowSelection]="rowSelection"
+    [rowData]="rowData"
+    [pagination]="true"
+    [paginationAutoPageSize]="true"
+    (gridReady)="onGridReady($event)"
+  ></ag-grid-angular>
+</div>

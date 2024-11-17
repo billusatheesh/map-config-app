@@ -1,0 +1,26 @@
+<nb-card>
+  <nb-card-header>
+    <div class="row row-cols-2">
+      <div class="col">
+        Test Result Compare
+      </div>
+      <div class="col">
+        Test Information
+      </div>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 editor">
+          <ngx-monaco-diff-editor
+            id="diffeditor"
+            [options]="diffOptions"
+            [originalModel]="originalModel"
+            [modifiedModel]="modifiedModel"
+          ></ngx-monaco-diff-editor>
+        </div>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
